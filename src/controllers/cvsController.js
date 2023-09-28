@@ -1,13 +1,12 @@
+const cvsService = require("../services/cvsService")
+
 const getAllCvs = (req, res) => {
-  res.send(
-    `
-      <h1> Hello from ${req.url}</h1>
-      <h1> Get all Cvs</h1>
-    `
-  )
+  const allCvs = cvsService.getAllCvs()
+  res.send({data: allCvs})
 }
 
 const getOneCv = (req, res) => {
+  const oneCv = cvsService.getOneCv()
   res.send(
       `
         <h1> Hello from ${req.url}</h1>
@@ -17,6 +16,7 @@ const getOneCv = (req, res) => {
 }
 
 const createOneCv = (req, res) => {
+  const  createdCv = cvsService.createOneCv(req.paras.cvId)
   res.send(
       `
         <h1> Hello from ${req.url}</h1>
@@ -26,6 +26,7 @@ const createOneCv = (req, res) => {
 }
 
 const updateOneCv = (req, res) => {
+  const updatedCv = cvsService.updateOneCv(req.paras.cvId)
   res.send(
       `
         <h1> Hello from ${req.url}</h1>
@@ -35,6 +36,7 @@ const updateOneCv = (req, res) => {
 }
 
 const deleteOneCv = (req, res) => {
+  const deletedCv = cvsService.deleteOneCv(req.paras.cvId)
   res.send(
       `
         <h1> Hello from ${req.url}</h1>
@@ -42,7 +44,6 @@ const deleteOneCv = (req, res) => {
       `
   )
 }
-
 module.exports = {
   getAllCvs,
   getOneCv,
@@ -51,4 +52,5 @@ module.exports = {
   deleteOneCv,
 
 }
+
 
